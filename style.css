@@ -1,18 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f7eaff, #e0f0ff);
-  margin: 0;
-  padding: 0;
-  color: #4a3b5c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
-  background-attachment: fixed;
+  background: url("https://i.imgur.com/gkX9b6z.png");
+  background-size: 200px 200px;
+  position: relative;
+  overflow: hidden;
 }
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffbdf2 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
 
 .container {
   background: rgba(255, 255, 255, 0.8);
