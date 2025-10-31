@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-  background: url("bows-bg.png");
-  background-size: 200px 200px;
-  position: relative;
-  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fce7ef; /* soft pink background */
+  background-image: url("bow-bg.png"); /* your image filename */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1); }
-}
 
 .sparkle {
   position: absolute;
