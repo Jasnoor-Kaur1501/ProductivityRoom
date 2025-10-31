@@ -7,14 +7,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fce7ef;
-  background-image: url("bows-bg.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-color: #ffeaf3;
+  background-image: url("bows-bg.png");
+  background-repeat: repeat;
+  background-size: 200px auto;
   background-position: center;
 }
-
-
 
 .sparkle {
   position: absolute;
@@ -114,5 +112,19 @@ button:hover {
     opacity: 0.9;
   }
 }
+@media (max-width: 768px) {
+  body {
+    background-size: 120px auto;
+  }
+}
+@keyframes floaty {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
+
+body {
+  animation: floaty 20s linear infinite;
+}
+
 
 
