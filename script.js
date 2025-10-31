@@ -11,6 +11,19 @@ function showCompliment() {
   document.getElementById("compliment").textContent = random;
 }
 
+function addSparkles() {
+  for (let i = 0; i < 30; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.style.top = `${Math.random() * 100}%`;
+    sparkle.style.left = `${Math.random() * 100}%`;
+    sparkle.style.animationDelay = `${Math.random() * 3}s`;
+    document.body.appendChild(sparkle);
+  }
+}
+window.onload = addSparkles;
+
+
 function addBows() {
   for (let i = 0; i < 15; i++) {
     const bow = document.createElement("img");
