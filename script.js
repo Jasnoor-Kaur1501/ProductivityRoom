@@ -11,16 +11,23 @@ function showCompliment() {
   document.getElementById("compliment").textContent = random;
 }
 
-function addFlowers() {
-  for (let i = 0; i < 10; i++) {
-    const flower = document.createElement("img");
-    flower.src = "https://cdn-icons-png.flaticon.com/512/765/765435.png";
-    flower.classList.add("flower");
-    flower.style.top = `${Math.random() * 100}%`;
-    flower.style.left = `${Math.random() * 100}%`;
-    flower.style.animationDelay = `${Math.random() * 5}s`;
-    document.body.appendChild(flower);
+function addBows() {
+  for (let i = 0; i < 15; i++) {
+    const bow = document.createElement("img");
+    bow.src = "https://cdn-icons-png.flaticon.com/512/682/682665.png"; // pink bow icon
+    bow.classList.add("flower");
+    bow.style.top = `${Math.random() * 100}%`;
+    bow.style.left = `${Math.random() * 100}%`;
+    bow.style.animationDelay = `${Math.random() * 5}s`;
+    document.body.appendChild(bow);
   }
+}
+
+window.onload = () => {
+  addBows();
+  showCompliment();
+};
+
 }
 
 window.onload = () => {
