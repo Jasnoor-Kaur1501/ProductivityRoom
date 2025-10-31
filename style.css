@@ -86,5 +86,29 @@ button:hover {
   50% {
     transform: translateY(-15px);
   }
+}.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #ffc0cb; /* pastel pink */
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float 5s infinite ease-in-out;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.3);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
+  }
+}
+
 
