@@ -7,12 +7,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fce7ef; /* soft pink background */
-  background-image: url("bow-bg.png"); /* your image filename */
+  background-color: #fce7ef;
+  background-image: url("bows-bg.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
+
 
 
 .sparkle {
