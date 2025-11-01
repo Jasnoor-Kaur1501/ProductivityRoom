@@ -24,9 +24,10 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   min-height: 350px;
-display: flex;
-flex-direction: column;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* added to center content consistently */
 }
 
 h1 {
@@ -62,8 +63,11 @@ button:hover {
   margin-top: 20px;
   font-style: italic;
   color: #d284b6;
-  min-height: 30px;
-  min-height: 40px;
+  min-height: 60px; /* raised height to stop jumping */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .timer-container {
