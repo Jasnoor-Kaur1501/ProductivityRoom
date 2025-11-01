@@ -57,8 +57,13 @@ const compliments = [
 ];
 
 function showCompliment() {
-  const random = compliments[Math.floor(Math.random() * compliments.length)];
-  document.getElementById("compliment").textContent = random;
+  const complimentEl = document.getElementById("compliment");
+  complimentEl.style.opacity = 0; // fade out
+  setTimeout(() => {
+    const random = compliments[Math.floor(Math.random() * compliments.length)];
+    complimentEl.textContent = random;
+    complimentEl.style.opacity = 1; // fade in
+  }, 200);
 }
 
 // sparkle animation
