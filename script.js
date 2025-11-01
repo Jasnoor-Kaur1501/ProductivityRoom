@@ -73,6 +73,26 @@ function addSparkles() {
   }
 }
 
+// simple timer
+let timer;
+let seconds = 0;
+function startTimer() {
+  if (timer) return;
+  timer = setInterval(() => {
+    seconds++;
+    const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const secs = String(seconds % 60).padStart(2, "0");
+    document.getElementById("timer").textContent = `${mins}:${secs}`;
+  }, 1000);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  timer = null;
+  seconds = 0;
+  document.getElementById("timer").textContent = "00:00";
+}
+
 window.onload = () => {
   addSparkles();
   showCompliment();
