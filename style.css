@@ -114,4 +114,13 @@ button:hover {
   body {
     background-size: 120px auto;
   }
+  #compliment {
+  display: block;
+  min-height: 45px;
+  max-height: 45px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
 }
+}
+
+
