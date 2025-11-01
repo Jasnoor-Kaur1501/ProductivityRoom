@@ -8,21 +8,12 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #ffeaf3;
-  background-image: url("bows-bg.png");
+  background-image: url("bows-bg.jpg");
   background-repeat: repeat;
   background-size: 200px auto;
   background-position: center;
+  animation: floaty 20s linear infinite;
 }
-
-.sparkle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #ffbdf2 0%, transparent 70%);
-  border-radius: 50%;
-  animation: sparkle 2s infinite ease-in-out;
-}
-
 
 .container {
   background: rgba(255, 255, 255, 0.6);
@@ -33,7 +24,6 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
-
 
 h1 {
   font-size: 2rem;
@@ -71,60 +61,44 @@ button:hover {
   min-height: 30px;
 }
 
-.flower {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  opacity: 0.8;
-  animation: float 6s infinite ease-in-out;
+.timer-container {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #f4b6c2;
+  border-radius: 15px;
+  padding: 15px;
 }
 
+#timer {
+  font-size: 1.5rem;
+  color: #c06bcf;
+  font-weight: 600;
+  margin: 10px 0;
+}
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}.sparkle {
+.sparkle {
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: #ffc0cb; /* pastel pink */
+  background-color: #ffc0cb;
   border-radius: 50%;
   opacity: 0.8;
   animation: float 5s infinite ease-in-out;
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.3);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.9;
-  }
+  0% { transform: translateY(0) scale(1); opacity: 0.9; }
+  50% { transform: translateY(-20px) scale(1.3); opacity: 0.6; }
+  100% { transform: translateY(0) scale(1); opacity: 0.9; }
 }
-@media (max-width: 768px) {
-  body {
-    background-size: 120px auto;
-  }
-}
+
 @keyframes floaty {
   from { background-position: 0 0; }
   to { background-position: 100px 100px; }
 }
 
-body {
-  animation: floaty 20s linear infinite;
+@media (max-width: 768px) {
+  body {
+    background-size: 120px auto;
+  }
 }
-
-
-
