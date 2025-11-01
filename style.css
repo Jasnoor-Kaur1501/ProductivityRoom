@@ -27,7 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* added to center content consistently */
+  align-items: center;
 }
 
 h1 {
@@ -63,11 +63,15 @@ button:hover {
   margin-top: 20px;
   font-style: italic;
   color: #d284b6;
-  min-height: 60px; /* raised height to stop jumping */
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;              /* stops layout from expanding */
+  white-space: pre-wrap;         /* keeps spacing stable */
+  line-height: 1.4;              /* keeps consistent height */
+  transition: opacity 0.2s ease; /* softens change effect */
 }
 
 .timer-container {
