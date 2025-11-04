@@ -28,6 +28,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.6);
+animation: glow 3s infinite alternate;
 }
 
 h1 {
@@ -58,6 +60,24 @@ button:hover {
   background-color: #92c9ff;
   transform: scale(1.05);
 }
+.timer-container button {
+  background-color: #ffc0cb;
+  color: white;
+  margin: 5px;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(255, 192, 203, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timer-container button:hover {
+  background-color: #ffb6c1;
+  transform: scale(1.05);
+}
+
 
 #compliment {
   margin-top: 20px;
@@ -74,13 +94,13 @@ button:hover {
   transition: opacity 0.2s ease; /* softens change effect */
 }
 
-.timer-container {
-  margin-top: 30px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid #f4b6c2;
-  border-radius: 15px;
-  padding: 15px;
-}
+<div class="timer-container">
+  <h3>⏰ Focus Timer</h3>
+  <div id="timer">00:00</div>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="resetTimer()">Reset</button>
+</div>
+
 
 #timer {
   font-size: 1.5rem;
@@ -115,3 +135,8 @@ button:hover {
     background-size: 120px auto;
   }
 }
+@keyframes glow {
+  from { box-shadow: 0 0 15px rgba(255, 182, 193, 0.4); }
+  to { box-shadow: 0 0 30px rgba(255, 182, 193, 0.8); }
+}
+
