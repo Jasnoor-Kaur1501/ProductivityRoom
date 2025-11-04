@@ -83,16 +83,13 @@ button:hover {
   margin-top: 20px;
   font-style: italic;
   color: #d284b6;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;              /* stops layout from expanding */
-  white-space: pre-wrap;         /* keeps spacing stable */
-  line-height: 1.4;              /* keeps consistent height */
-  transition: opacity 0.2s ease; /* softens change effect */
+  min-height: 70px; /* keeps it stable even for long quotes */
+  max-width: 300px; /* so text wraps neatly */
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 <div class="timer-container">
   <h3>⏰ Focus Timer</h3>
