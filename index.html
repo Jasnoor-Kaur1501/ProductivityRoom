@@ -7,18 +7,55 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
- <div class="container">
-  <h1>Productivity Room</h1>
-  <p>Take a breath, focus, and bloom 🌸</p>
-  <button onclick="showCompliment()">✨ Get Motivation ✨</button>
-  <p id="compliment"></p>
-  <div class="timer-container">
-    <p id="timer-label">Focus Timer ⏳</p>
-    <div id="timer">00:00</div>
-    <button onclick="startTimer()">Start</button>
-    <button onclick="resetTimer()">Reset</button>
+  <div class="container">
+    <h1>Productivity Room</h1>
+    <p>Take a breath, focus, and bloom 🌸</p>
+
+    <button onclick="showCompliment()">✨ Get Motivation ✨</button>
+    <p id="compliment"></p>
+
+    <div class="dashboard">
+      <!-- Focus Timer -->
+      <div class="timer-card">
+        <h3>⏰ Focus Timer</h3>
+        <div id="timer">00:00</div>
+        <div class="timer-controls">
+          <button onclick="startTimer()">Start</button>
+          <button onclick="stopTimer()">Stop</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+      </div>
+
+      <!-- To-Do Widget -->
+      <div class="todo-card">
+        <h3>📝 To-Do List</h3>
+        <form id="todoForm">
+          <input id="newTask" type="text" placeholder="Add a task..." autocomplete="off" />
+          <button id="addTaskBtn" type="submit">Add</button>
+        </form>
+        <ul id="tasksList"></ul>
+        <div class="widget-footer">
+          <button id="clearTasks">Clear All</button>
+          <small class="saved-note">Saved 24h</small>
+        </div>
+      </div>
+
+      <!-- Affirmation Widget -->
+      <div class="aff-card">
+        <h3>💖 Affirmations</h3>
+        <textarea id="affText" placeholder="Write an affirmation..."></textarea>
+        <div class="widget-footer">
+          <button id="saveAff">Save</button>
+          <button id="clearAff">Clear</button>
+          <small class="saved-note">Saved 24h</small>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+  <script src="script.js"></script>
+</body>
+
 <!-- REPLACE your current timer buttons with this block (inside .timer-container) -->
 <div class="timer-container">
   <h3>⏰ Focus Timer</h3>
