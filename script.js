@@ -90,53 +90,6 @@ function startTimer() {
     document.getElementById("timer").textContent = `${mins}:${secs}`;
   }, 1000);
 }
-<!-- REPLACE your current timer buttons with this block (inside .timer-container) -->
-<div class="timer-container">
-  <h3>⏰ Focus Timer</h3>
-  <div id="timer">00:00</div>
-  <div class="timer-controls">
-    <button onclick="startTimer()">Start</button>
-    <button onclick="stopTimer()">Stop</button>        <!-- NEW Stop button -->
-    <button onclick="resetTimer()">Reset</button>
-  </div>
-</div>
-
-<!-- ADD these two toggle buttons (place anywhere visible) -->
-<div class="widget-toggle">
-  <button id="toggleTodoBtn" type="button">To-Do</button>
-  <button id="toggleAffBtn" type="button">Affirm</button>
-</div>
-
-<!-- ADD widget containers (paste these right before your script tag) -->
-<!-- To-Do floating widget -->
-<div id="todoWidget" class="floating-widget hidden">
-  <div class="widget-header" id="todoHeader">To-Do List ✨ <span class="drag-hint">⋯</span></div>
-  <div class="widget-body">
-    <form id="todoForm">
-      <input id="newTask" type="text" placeholder="Add a task..." autocomplete="off" />
-      <button id="addTaskBtn" type="submit">Add</button>
-    </form>
-    <ul id="tasksList"></ul>
-    <div class="widget-footer">
-      <button id="clearTasks">Clear All</button>
-      <small class="saved-note">Saved 24h</small>
-    </div>
-  </div>
-</div>
-
-<!-- Affirmation floating widget -->
-<div id="affWidget" class="floating-widget hidden">
-  <div class="widget-header" id="affHeader">Affirmations 💖 <span class="drag-hint">⋯</span></div>
-  <div class="widget-body">
-    <textarea id="affText" placeholder="Write an affirmation..."></textarea>
-    <div class="widget-footer">
-      <button id="saveAff">Save</button>
-      <button id="clearAff">Clear</button>
-      <small class="saved-note">Saved 24h</small>
-    </div>
-  </div>
-</div>
-
 
 function resetTimer() {
   clearInterval(timer);
@@ -149,3 +102,173 @@ window.onload = () => {
   addSparkles();
   showCompliment();
 };
+/* ==== Widget + To-Do + Affirmation + Stop button logic ==== */
+
+/* STOP button for timer (pause keeping seconds) */
+function stopTimer() {
+  clearInterval(timer);
+  timer = null;
+}
+
+/* Toggle widgets */
+const toggleTodoBtn = document.getElementById('toggleTodoBtn');
+const toggleAffBtn = document.getElementById('toggleAffBtn');
+const todoWidget = document.getElementById('todoWidget');
+const affWidget = document.getElementById('affWidget');
+
+toggleTodoBtn.addEventListener('click', () => {
+  const show = todoWidget.classList.toggle('hidden');
+  // ensure other widget closed
+  affWidget.classList.add('hidden');
+});
+
+toggleAffBtn.addEventListener('click', () => {
+  const show = affWidget.classList.toggle('hidden');
+  todoWidget.classList.add('hidden');
+});
+
+/* DRAGGING helper */
+function makeDraggable(headerId, widgetEl) {
+  const header = document.getElementById(headerId);
+  let isDown = false, startX, startY, origX, origY;
+  header.addEventListener('pointerdown', (e) => {
+    isDown = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    const rect = widgetEl.getBoundingClientRect();
+    origX = rect.left;
+    origY = rect.top;
+    header.setPointerCapture(e.pointerId);
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    widgetEl.style.left = (origX + dx) + 'px';
+    widgetEl.style.top = (origY + dy) + 'px';
+    widgetEl.style.right = 'auto';
+    widgetEl.style.bottom = 'auto';
+  });
+  window.addEventListener('pointerup', (e) => { isDown = false; });
+}
+makeDraggable('todoHeader', todoWidget);
+makeDraggable('affHeader', affWidget);
+
+/* ===== 24h localStorage helpers ===== */
+function saveWithExpiry(key, value, hours=24) {
+  const data = { value, expiry: Date.now() + hours*60*60*1000 };
+  localStorage.setItem(key, JSON.stringify(data));
+}
+function loadWithExpiry(key) {
+  const raw = localStorage.getItem(key);
+  if (!raw) return null;
+  try {
+    const obj = JSON.parse(raw);
+    if (!obj.expiry || Date.now() > obj.expiry) {
+      localStorage.removeItem(key);
+      return null;
+    }
+    return obj.value;
+  } catch {
+    localStorage.removeItem(key);
+    return null;
+  }
+}
+
+/* ===== To-Do logic ===== */
+const tasksKey = 'prodroom_tasks_v1';
+const tasksListEl = document.getElementById('tasksList');
+const todoForm = document.getElementById('todoForm');
+const newTaskInput = document.getElementById('newTask');
+const clearTasksBtn = document.getElementById('clearTasks');
+
+function renderTasks(tasks) {
+  tasksListEl.innerHTML = '';
+  tasks.forEach((t, i) => {
+    const li = document.createElement('li');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = !!t.done;
+    cb.className = 'task-checkbox';
+    cb.addEventListener('change', () => {
+      tasks[i].done = cb.checked;
+      saveWithExpiry(tasksKey, tasks);
+      renderTasks(tasks);
+    });
+
+    const span = document.createElement('span');
+    span.className = 'task-text';
+    span.textContent = t.text;
+    if (t.done) span.style.textDecoration = 'line-through';
+
+    const del = document.createElement('button');
+    del.className = 'task-delete';
+    del.textContent = '✕';
+    del.addEventListener('click', () => {
+      tasks.splice(i,1);
+      saveWithExpiry(tasksKey, tasks);
+      renderTasks(tasks);
+    });
+
+    li.appendChild(cb);
+    li.appendChild(span);
+    li.appendChild(del);
+    tasksListEl.appendChild(li);
+  });
+}
+
+function loadTasks() {
+  const loaded = loadWithExpiry(tasksKey);
+  if (loaded && Array.isArray(loaded)) return loaded;
+  return [];
+}
+
+let tasks = loadTasks();
+renderTasks(tasks);
+
+todoForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const text = newTaskInput.value.trim();
+  if (!text) return;
+  tasks.push({ text, done:false });
+  saveWithExpiry(tasksKey, tasks);
+  newTaskInput.value = '';
+  renderTasks(tasks);
+});
+
+clearTasksBtn.addEventListener('click', () => {
+  tasks = [];
+  saveWithExpiry(tasksKey, tasks);
+  renderTasks(tasks);
+});
+
+/* ===== Affirmation widget logic ===== */
+const affKey = 'prodroom_aff_v1';
+const affText = document.getElementById('affText');
+const saveAffBtn = document.getElementById('saveAff');
+const clearAffBtn = document.getElementById('clearAff');
+
+function loadAff() {
+  const v = loadWithExpiry(affKey);
+  if (v) affText.value = v;
+}
+loadAff();
+
+saveAffBtn.addEventListener('click', () => {
+  saveWithExpiry(affKey, affText.value || '');
+  // visual feedback
+  saveAffBtn.textContent = 'Saved';
+  setTimeout(()=> saveAffBtn.textContent = 'Save', 900);
+});
+clearAffBtn.addEventListener('click', () => {
+  affText.value = '';
+  localStorage.removeItem(affKey);
+});
+
+/* close widgets when clicking outside (optional nicety) */
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.floating-widget') && !e.target.closest('.widget-toggle') ) {
+    // do nothing — keeps them open unless toggles clicked
+  }
+});
+
