@@ -228,6 +228,63 @@ button:hover {
   .floating-widget { width: 90%; left:5%; right:5%; bottom:80px; }
   .widget-toggle { right: 10px; bottom: 12px; }
 }
+.dashboard {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.timer-card, .todo-card, .aff-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid #cce5ff;
+  border-radius: 15px;
+  padding: 18px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.timer-card h3, .todo-card h3, .aff-card h3 {
+  color: #3b6ba5;
+  margin-bottom: 10px;
+}
+
+.todo-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  max-height: 140px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.todo-card li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.todo-card input[type="checkbox"] {
+  accent-color: #5fb6ff;
+}
+
+.aff-card textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid #a6d8ff;
+  padding: 8px;
+  font-family: "Poppins", sans-serif;
+  resize: vertical;
+}
+
+.timer-controls button {
+  background-color: #ffc0cb;
+}
 
 
 
