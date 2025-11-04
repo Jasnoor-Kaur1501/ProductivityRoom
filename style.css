@@ -134,6 +134,100 @@ button:hover {
   from { box-shadow: 0 0 15px rgba(255, 182, 193, 0.4); }
   to { box-shadow: 0 0 30px rgba(255, 182, 193, 0.8); }
 }
+/* ==== Widget toggles (fixed small buttons) ==== */
+.widget-toggle {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  display: flex;
+  gap: 10px;
+  z-index: 1200;
+}
+
+.widget-toggle button {
+  background: #8ed0ff;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 8px 12px;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(142,208,255,0.25);
+  cursor: pointer;
+}
+.widget-toggle button:hover { transform: scale(1.05); }
+
+/* ==== Floating widget base ==== */
+.floating-widget {
+  position: fixed;
+  width: 260px;
+  max-width: 90%;
+  background: rgba(235, 248, 255, 0.92); /* baby blue look */
+  border: 1px solid rgba(160,200,230,0.6);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(40,60,90,0.08);
+  z-index: 1100;
+  right: 18px;                /* default place */
+  bottom: 90px;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* hidden helper */
+.hidden { display: none; }
+
+/* header (drag handle) */
+.widget-header {
+  padding: 8px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(230,245,255,0.55));
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  font-weight: 600;
+  color: #2b4f6a;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.drag-hint { opacity: 0.45; font-size: 14px; }
+
+/* body */
+.widget-body { padding: 12px; }
+#todoForm { display:flex; gap:8px; margin-bottom:10px; }
+#newTask {
+  flex:1;
+  padding:8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+#addTaskBtn {
+  background:#5fb6ff;
+  color:#fff; border:none; padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:600;
+}
+#tasksList { list-style:none; padding:0; margin:0; max-height:170px; overflow:auto; }
+#tasksList li { display:flex; align-items:center; gap:8px; padding:6px 4px; border-bottom:1px dashed rgba(0,0,0,0.03); }
+.task-checkbox { width:16px; height:16px; cursor:pointer; }
+.task-text { flex:1; font-size:14px; color:#294a63; }
+.task-delete { background:transparent; border:none; color:#c43b7a; cursor:pointer; font-weight:700; }
+
+/* affirmation textarea */
+#affText {
+  width:100%;
+  min-height:100px;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.06);
+  resize:vertical;
+}
+.widget-footer { display:flex; gap:8px; justify-content:space-between; align-items:center; margin-top:8px; }
+.widget-footer button {
+  background:#5fb6ff; color:#fff; border:none; padding:6px 10px; border-radius:8px; cursor:pointer; font-weight:600;
+}
+.saved-note { font-size:11px; color:rgba(0,0,0,0.45); }
+
+/* small responsive tweak */
+@media (max-width:420px) {
+  .floating-widget { width: 90%; left:5%; right:5%; bottom:80px; }
+  .widget-toggle { right: 10px; bottom: 12px; }
+}
 
 
 
