@@ -90,6 +90,53 @@ function startTimer() {
     document.getElementById("timer").textContent = `${mins}:${secs}`;
   }, 1000);
 }
+<!-- REPLACE your current timer buttons with this block (inside .timer-container) -->
+<div class="timer-container">
+  <h3>⏰ Focus Timer</h3>
+  <div id="timer">00:00</div>
+  <div class="timer-controls">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>        <!-- NEW Stop button -->
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+</div>
+
+<!-- ADD these two toggle buttons (place anywhere visible) -->
+<div class="widget-toggle">
+  <button id="toggleTodoBtn" type="button">To-Do</button>
+  <button id="toggleAffBtn" type="button">Affirm</button>
+</div>
+
+<!-- ADD widget containers (paste these right before your script tag) -->
+<!-- To-Do floating widget -->
+<div id="todoWidget" class="floating-widget hidden">
+  <div class="widget-header" id="todoHeader">To-Do List ✨ <span class="drag-hint">⋯</span></div>
+  <div class="widget-body">
+    <form id="todoForm">
+      <input id="newTask" type="text" placeholder="Add a task..." autocomplete="off" />
+      <button id="addTaskBtn" type="submit">Add</button>
+    </form>
+    <ul id="tasksList"></ul>
+    <div class="widget-footer">
+      <button id="clearTasks">Clear All</button>
+      <small class="saved-note">Saved 24h</small>
+    </div>
+  </div>
+</div>
+
+<!-- Affirmation floating widget -->
+<div id="affWidget" class="floating-widget hidden">
+  <div class="widget-header" id="affHeader">Affirmations 💖 <span class="drag-hint">⋯</span></div>
+  <div class="widget-body">
+    <textarea id="affText" placeholder="Write an affirmation..."></textarea>
+    <div class="widget-footer">
+      <button id="saveAff">Save</button>
+      <button id="clearAff">Clear</button>
+      <small class="saved-note">Saved 24h</small>
+    </div>
+  </div>
+</div>
+
 
 function resetTimer() {
   clearInterval(timer);
