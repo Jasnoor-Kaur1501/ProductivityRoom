@@ -72,6 +72,22 @@ button:hover {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+#stopBtn {
+  background-color: #a4d8ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(164, 216, 255, 0.4);
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#stopBtn:hover {
+  background-color: #8acfff;
+  transform: scale(1.05);
+}
 
 .timer-container button:hover {
   background-color: #ffb6c1;
