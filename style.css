@@ -60,6 +60,15 @@ button:hover {
   background-color: #92c9ff;
   transform: scale(1.05);
 }
+#timer {
+  font-size: 2.5rem;
+  color: #6b21a8; /* soft purple to match your theme */
+  margin: 20px 0;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+}
+
 .timer-container button {
   background-color: #ffc0cb;
   color: white;
@@ -72,6 +81,7 @@ button:hover {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 #stopBtn {
   background-color: #a4d8ff;
   color: white;
