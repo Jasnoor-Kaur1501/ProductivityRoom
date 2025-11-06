@@ -97,8 +97,15 @@ function resetTimer() {
   seconds = 0;
   document.getElementById("timer").textContent = "00:00";
 }
+function stopTimer() {
+  clearInterval(timer);
+  timer = null;
+}
+
 
 window.onload = () => {
   addSparkles();
   showCompliment();
 };
+document.getElementById("stopBtn").addEventListener("click", stopTimer);
+
