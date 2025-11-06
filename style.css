@@ -118,7 +118,7 @@ button:hover {
 
 
 <div class="timer-container">
-  <h3>⏰ Focus Timer</h3>
+  <h3>🌷 Focus Timer 🌷</h3>
   <div id="timer">00:00</div>
   <button onclick="startTimer()">Start</button>
   <button onclick="resetTimer()">Reset</button>
@@ -131,6 +131,14 @@ button:hover {
   font-weight: 600;
   margin: 10px 0;
 }
+.timer-container h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #a24bcf;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
 
 .sparkle {
   position: absolute;
