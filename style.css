@@ -177,4 +177,13 @@ button:hover {
   from { box-shadow: 0 0 15px rgba(255, 182, 193, 0.4); }
   to { box-shadow: 0 0 30px rgba(255, 182, 193, 0.8); }
 }
+/* Focus Timer Heading */
+.timer-container h3 {
+  font-family: 'Lora', serif;
+  color: #ff69b4; /* soft pink */
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
 
