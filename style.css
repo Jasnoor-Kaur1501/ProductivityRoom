@@ -139,7 +139,7 @@ button:hover {
 }
 .timer-container h3 {
   font-family: 'Lora', serif;
-  color: #ff69b4; /* soft pink */
+  color: #c06bcf; /* soft pink */
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -179,7 +179,7 @@ button:hover {
 /* Focus Timer Heading */
 .timer-container h3 {
   font-family: 'Lora', serif;
-  color: #c06bcf; /* soft pink */
+  color: #c06bcf;
   font-weight: 600;
   font-size: 1.8rem;
   letter-spacing: 0.5px;
