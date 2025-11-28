@@ -166,4 +166,4 @@ Portfolio display projects
 
 👤 Author
 
-Built by J — creating calm, aesthetic productivity tools with clean UI and effortless UX.
+Built by Jas — creating calm, aesthetic productivity tools with clean UI and effortless UX.
